@@ -1,0 +1,58 @@
+﻿@model IEnumerable<InsuranceFinalProject.Models.Message>
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Messages</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgSub)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgContent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgSub)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgContent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MessageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MessageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MessageId })
+        </td>
+    </tr>
+}
+
+</table>

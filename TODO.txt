@@ -1,0 +1,10 @@
+TODO's
+
+- Registration system
+	- Creating new users and then registering a vehicle
+	- Registering a vehicle for an existing user
+	- Adding insurance type to vehicle
+- Login system
+- User details page
+- Edit user details page
+

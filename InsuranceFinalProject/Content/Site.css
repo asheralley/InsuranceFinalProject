@@ -1,0 +1,277 @@
+﻿/*#02111B - black
+#1F487E - blue
+#5D737E - blue-grey
+#353535 - grey
+#FCFCFC - white*/
+
+
+body {
+    padding: 0;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Main Navbar */
+.navbar {
+    padding: 1.8em;
+}
+
+/*.nav-link {
+    border-bottom: 1px solid transparent;
+}
+.nav-link:hover {
+    border-bottom: 1px solid #02111B;
+}*/
+
+.nav-item{
+    position: relative;
+    margin-left: 1.2em;
+}
+
+.nav-link{
+    color: #5d737e!important;
+}
+
+.nav-link::after, .nav-link::before {
+    content: '';
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all .35s ease;
+    opacity: 0;
+}
+
+.nav-link::before {
+    content: '';
+    right: 0;
+    top: 0;
+    border-top: 3px solid #5D737E;
+    border-right: 3px solid #5D737E;
+    transform: translate(-100%, 50%);
+}
+
+.nav-link::after {
+    content: '';
+    left: 0;
+    bottom: 0;
+    border-bottom: 3px solid #5D737E;
+    border-left: 3px solid #5D737E;
+    transform: translate(100%, -50%);
+}
+
+.nav-link:hover:after, .nav-link:hover:before {
+    transform: translate(0,0);
+    opacity: 1;
+}
+
+/* Logo */
+.main-logo {
+    width: 220px;
+}
+
+/*Sticky nav*/
+.sticky-nav {
+    display: block;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1em;
+    box-shadow: 0 4px 4px 0 rgba(12,0,51,0.1);
+    z-index: 1000;
+    animation: fadeIn 0.5s;
+}
+
+.nav-hide {
+    transform: scaleY(0);
+    display: none;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scroll-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-logo-sticky {
+    width: 180px;
+}
+
+/*.carousel-caption.d-none.d-md-block {
+    text-align: center;
+    bottom: 0;
+    top: 0;
+    padding: 10em 1.2em;
+    margin: 0;
+    right: 0;
+    left: auto;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+}
+
+.cta-sub{
+    margin-top: 1.2em;
+}*/
+
+.accordian-content {
+    margin-top: 3em;
+}
+
+.grab-heading {
+    margin-bottom: 1.2em;
+}
+
+/* Services styling */
+
+.about {
+    background-image: url(img/kylo-FPZ8Lnn5Ws8-unsplash.jpg);
+}
+
+.services {
+    background-image: url(img/kelly-sikkema-XXherw1ujoI-unsplash.jpg);
+}
+
+.contact {
+    background-image: url(img/jake-blucker-ZGnC2gOvzKw-unsplash.jpg);
+}
+
+.hero-banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    max-height: 493px;
+    min-height: 493px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hero-banner .container {
+    padding: 0;
+}
+
+.page-heading {
+    color: #fcfcfc;
+    padding: 1.5em;
+    background: rgba(0,0,0,0.8);
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.0) 100%);
+}
+
+.col.services-info {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.services-info .card {
+    margin: 0 auto;
+}
+
+.col-heading {
+    text-align: center;
+}
+
+.col-item {
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #353535;
+    color: #FCFCFC;
+    padding: 2.9em 2.0em 2.0em;
+}
+
+footer h4 {
+    margin-bottom: 0.6em;
+}
+
+.footer-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .footer-ul li {
+        margin-bottom: 0.5em;
+    }
+
+.lower-footer {
+    padding: 1.2em 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-spacer hr {
+    border-color: #fcfcfc;
+}
+
+.sprites {
+    display: inline;
+    list-style: none;
+    padding: 0;
+}
+
+.sprites li {
+    display: inline;
+}
+
+.sprites li a {
+    color: transparent;
+}
+
+.sprites li a:hover {
+    color: transparent;
+}
+
+.sprites li a:hover svg {
+    fill: #787878;
+}
+
+.sprites li svg {
+    width: 50px;
+    height: 50px;
+    fill: #fcfcfc;
+}
+
+.main-logo-footer {
+    width: 180px;
+    vertical-align: super;
+}
+
+/* Navbar animation */
+@keyframes fadeIn {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    100% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+}

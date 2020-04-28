@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/User/_UserLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="radio" value="c" name="newVehicleType" /> Car
+            <input type="radio" value="m" name="newVehicleType" /> Motor Cycle
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+}

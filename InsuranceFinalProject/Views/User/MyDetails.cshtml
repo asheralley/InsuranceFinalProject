@@ -1,0 +1,30 @@
+﻿@model InsuranceFinalProject.ViewModel.CarMotorDetails
+
+<div>
+    <h3><span>Name: </span>@ViewBag.userFirstName @ViewBag.userLastName</h3>
+    <h3><span>Username: </span>@ViewBag.userUserName</h3>
+</div>
+<div>
+    @foreach (var car in Model.CarDetails)
+    {
+        <h3>Car Details: </h3>
+        <p>@car.CarReg</p>
+        <p>@car.CarValue</p>
+        <p>@car.ModeofUse</p>
+    }
+</div>
+<div>
+    @foreach (var moto in Model.MotorBikeDetails)
+    {
+        <h3>Motor Cycle Details: </h3>
+        <p>@moto.MotorReg</p>
+        <p>@moto.MotorValue</p>
+        <p>@moto.ModeofUse</p>
+    }
+</div>
+
+@* Set edit button here *@
+
+<div>
+    @Html.ActionLink("Edit your details", "EditDetails", "User")
+</div>

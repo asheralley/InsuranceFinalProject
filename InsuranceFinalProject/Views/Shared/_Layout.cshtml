@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alliance Insurance - @ViewBag.Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img class="main-logo" src="~/Content/img/logo-thick.png" alt="Alternate Text" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Services", "Services", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    @if (Session["UserId"] != null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("My Details", "MyDetails", "User", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Register another vehicle", "RegisterVehicle", "User", null, new { @class = "nav-link" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Register", "Register", "User", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Login", "User", null, new { @class = "nav-link" })
+                        </li>
+                    }
+                    </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    @* Scroll down nav here *@
+    @* Make this a partial view *@
+
+        <div class="sticky-nav nav-hide" id="stickyNav">
+            <div class="container nav-flex">
+                <a class="" href="@Url.Action("Index", "Home")"><img class="main-logo-sticky" src="~/Content/img/logo-thick.png" alt="Alternate Text" /></a>
+
+                <ul>
+                    @if (Session["UserId"] != null)
+                    {
+                        <li class="sticky-nav-item">
+                            @Html.ActionLink("My Details", "MyDetails", "User", null, new { @class = "sticky-nav-link" })
+                        </li>
+                        <li class="sticky-nav-item">
+                            @Html.ActionLink("Register another vehicle", "RegisterVehicle", "User", null, new { @class = "sticky-nav-link" })
+                        </li>
+                        <li class="sticky-nav-item">
+                            @Html.ActionLink("Make a Claim", "Claim", "User", null, new { @class = "sticky-nav-link" })
+                        </li>
+                        <li class="sticky-nav-item">
+                            @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "sticky-nav-link" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="sticky-nav-item">
+                            @Html.ActionLink("Register", "Register", "User", null, new { @class = "sticky-nav-link" })
+                        </li>
+                        <li class="sticky-nav-item">
+                            @Html.ActionLink("Login", "Login", "User", null, new { @class = "sticky-nav-link" })
+                        </li>
+                    }
+                    </ul>
+            </div>
+        </div>
+
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h4>Car Insurance</h4>
+                    <ul class="footer-ul">
+                        <li>Full cover</li>
+                        <li>Fire, theft and third party</li>
+                        <li>Third party</li>
+                    </ul>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-3">
+                    <h4>Motorcycle Insurance</h4>
+                    <ul class="footer-ul">
+                        <li>Full cover</li>
+                        <li>Fire, theft and third party</li>
+                        <li>Third party</li>
+                    </ul>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-3">
+                    <h4>Existing Customers</h4>
+                    <ul class="footer-ul">
+                        <li>My Alliance Account</li>
+                        <li>Claims</li>
+                        <li>Policy information</li>
+                        <li>Register</li>
+                        <li>Policy information</li>
+                    </ul>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-3">
+                    <h4>About Us</h4>
+                    <ul class="footer-ul">
+                        <li>About Alliance Insurance</li>
+                        <li>Community work</li>
+                        <li>Contact us</li>
+                        <li>Careers</li>
+                    </ul>
+                </div><!-- /.col-lg-4 -->
+            </div>
+            <div class="footer-spacer">
+                <hr />
+            </div>
+            <div class="lower-footer">
+                <ul class="sprites">
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="99.04" height="99.04" viewBox="0 0 99.04 99.04">
+                                <path d="M67.09,28.21h0A4.92,4.92,0,1,0,72,33.13,4.92,4.92,0,0,0,67.09,28.21Z"></path>
+                                <path d="M49.52,0A49.52,49.52,0,1,0,99,49.52,49.52,49.52,0,0,0,49.52,0ZM75.43,71.13a5.22,5.22,0,0,1-5.18,5.18H28.78a5.22,5.22,0,0,1-5.18-5.18V44.4H35.13a15.38,15.38,0,0,0-1.16,6,15.55,15.55,0,0,0,31.1,0,15.38,15.38,0,0,0-1.16-6H75.43ZM40.18,50.4a9.27,9.27,0,0,1,9.34-9.2A8.86,8.86,0,0,1,56,43.92,9.27,9.27,0,1,1,40.18,50.4Zm35.26-9H62.21a16.72,16.72,0,0,0-1.7-2l-.05-.05a15.52,15.52,0,0,0-21.95.05,16.72,16.72,0,0,0-1.7,2H23.63V29.67a5.22,5.22,0,0,1,5.18-5.18H70.26a5.22,5.22,0,0,1,5.18,5.18Z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="99.04" height="99.04" viewBox="0 0 99.04 99.04">
+                                <path d="M49.56,0A49.52,49.52,0,1,0,99.08,49.52,49.52,49.52,0,0,0,49.56,0ZM61.35,32.13H56c-2.24,0-4.19.91-4.19,3.81v6.59h9.33l-1.29,9.29h-8V75.54H42.36v0h0V51.9h-8V42.57h8V35.11c0-4.77,2.74-11.65,11.9-11.65a57,57,0,0,1,7.09.46Z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg width="99.04" height="99.04" viewBox="0 0 99.04 99.04" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                            <g transform="matrix(1,0,0,1,-296.351,-75.52)">
+                            <path d="M345.871,75.52C373.202,75.52 395.391,97.709 395.391,125.04C395.391,152.371 373.202,174.56 345.871,174.56C318.54,174.56 296.351,152.371 296.351,125.04C296.351,97.709 318.54,75.52 345.871,75.52ZM367.776,103.178C368.225,103.589 374.944,101.157 375.903,100.048C376.862,98.939 374.194,105.684 370.387,107.213C370.387,107.213 377.012,106.133 377.851,105.234C377.851,105.234 374.669,110.17 371.371,112.028C371.371,112.028 371.333,112.482 371.316,113.718C371.175,123.849 364.794,149.845 334,151.08C334,151.08 321.722,150.882 313.89,145.112C313.89,145.112 315.764,145.261 317.038,145.261C318.312,145.261 327.08,145.299 333.076,139.753C333.076,139.753 324.42,139.903 321.01,130.647C321.01,130.647 324.382,131.322 326.968,130.347C326.968,130.347 316.991,128.821 316.438,117.382C316.438,117.382 319.491,119.395 322.464,118.992C322.464,118.992 316.225,114.968 316.563,108.148C316.563,108.148 316.259,104.176 318.228,101.553C318.228,101.553 327.12,114.218 345.342,115.155C345.342,115.155 344.977,114.218 345.014,112.232C345.014,112.232 344.635,100.073 358.262,99.006C359.342,98.922 363.918,99.642 367.776,103.178Z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </g>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+                <div>
+                    <img class="main-logo-footer" src="~/Content/img/logo-white.png" alt="Alternate Text" />
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

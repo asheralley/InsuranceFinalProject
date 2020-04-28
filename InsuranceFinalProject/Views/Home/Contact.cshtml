@@ -1,0 +1,82 @@
+﻿@model InsuranceFinalProject.Models.Message
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="hero-banner contact">
+    <div class="container">
+        <h2 class="page-heading">@ViewBag.Title</h2>
+    </div>
+</div>
+
+@if (ViewBag.feedBack != null)
+{
+    // make this bigger!
+    <div>@ViewBag.feedBack</div>
+}
+
+@using (Html.BeginForm("Message", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label for="formGroupExampleInput" class="control-label col-md-2">Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MsgName, new { htmlAttributes = new { @class = "form-control", @name = "MsgName", @placeholder = "Enter your name" } })
+                @Html.ValidationMessageFor(model => model.MsgName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1" class="control-label col-md-2">Email address</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MsgEmail, new { htmlAttributes = new { @class = "form-control", @name = "MsgEmail", @placeholder = "Enter your email address" } })
+                @Html.ValidationMessageFor(model => model.MsgEmail, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput" class="control-label col-md-2">Phone number</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MsgPhone, new { htmlAttributes = new { @class = "form-control", @name = "MsgPhone", @placeholder = "Enter your phone number" } })
+                @Html.ValidationMessageFor(model => model.MsgPhone, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput" class="control-label col-md-2">Message subject</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MsgSub, new { htmlAttributes = new { @class = "form-control", @name = "MsgSub", @placeholder = "Enter a message subject" } })  @Html.ValidationMessageFor(model => model.MsgSub, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="control-label col-md-2">Your message</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MsgContent, new { @class = "form-control", @name = "MsgContent", @placeholder = "Enter your message" })
+                @Html.ValidationMessageFor(model => model.MsgContent, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send message" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

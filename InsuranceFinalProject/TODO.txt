@@ -1,0 +1,17 @@
+﻿TODO's
+
+- Error Controller and exception handling
+- Add validation to all models
+- Facebook link
+- Edit my details page -> Add explination headings - ui fix needed
+- Content and styling
+	- Index page -> content
+	- About page -> content/gallery
+	- Contact page -> content
+	- Services page -> content
+	 -> UI
+		- Responsive
+		- Fix all the spacing and UI inconsistancies
+		- Back to top scroll? -> If time
+- Final checks
+
