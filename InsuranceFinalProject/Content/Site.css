@@ -5,15 +5,16 @@
 #FCFCFC - white*/
 
 
-body {
+body, *{
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -197,6 +198,57 @@ textarea {
 
 .col-item {
     text-align: center;
+}
+
+/* Contact Page */
+.contact-body {
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    padding: 0 0 1.2em 0;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contact-heading {
+    background: #5D737E;
+    padding: 1.2em 2.5em;
+}
+
+.contact-heading h3 {
+    font-size: 1.4em;
+    color: #fcfcfc;
+}
+
+.contact-input {
+    width: 80%;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.contact-input input, select, textarea {
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+.contact-submit{
+
+}
+
+.input-button {
+    padding: 0.5em 0.8em;
+    background: #5d737e;
+    border: none;
+    border-radius: 3px;
+    color: #fcfcfc;
+}
+
+
+.home-link {
+    text-align: center;
+    margin: 2.5em auto 0;
+    position: relative;
+    width: 100px;
 }
 
 /* Footer */
