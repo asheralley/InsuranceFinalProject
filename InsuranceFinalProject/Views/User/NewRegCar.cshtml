@@ -1,54 +1,55 @@
 ﻿@using InsuranceFinalProject.ViewModel
 @model UserCarMotorModel
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Car</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarReg, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarReg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CarReg, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarValue, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarValue, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CarValue, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModeofUse, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ModeofUse,
-                    new SelectList(Enum.GetValues(typeof(Mode))),
-                    "Select Mode of use",
-                    new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ModeofUse, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<div class="contact-body">
+    <div class="contact-heading">
+        <h3>Car details</h3>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to Home", "Index")
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="contact-input">
+                    @Html.EditorFor(model => model.CarReg, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registration number" } })
+                    @Html.ValidationMessageFor(model => model.CarReg, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="contact-input">
+                    @Html.EditorFor(model => model.CarValue, new { htmlAttributes = new { @class = "form-control", @placeholder = "Listed value" } })
+                    @Html.ValidationMessageFor(model => model.CarValue, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="contact-input">
+                    @Html.DropDownListFor(model => model.ModeofUse,
+                        new SelectList(Enum.GetValues(typeof(Mode))),
+                        "Select Mode of use",
+                        new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ModeofUse, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="contact-submit">
+                    <input type="submit" value="Create" class="input-button" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="home-link-container">
+    <div class="home-link">
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+    </div>
 </div>
 
 @section Scripts {

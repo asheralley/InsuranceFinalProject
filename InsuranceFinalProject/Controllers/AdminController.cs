@@ -23,22 +23,63 @@ namespace InsuranceFinalProject.Controllers
 
         public ActionResult Messages()
         {
-            return View(messageDb.Messages.ToList());
+            try
+            {
+                return View(messageDb.Messages.ToList());
+            }
+            catch(Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
+            
         }
 
         public ActionResult Users()
         {
-            return View(insuranceDb.Users.ToList());
+            try
+            {
+                return View(insuranceDb.Users.ToList());
+            }
+            catch (Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
+
+
         }
 
         public ActionResult Claims()
         {
-            return View(insuranceDb.Claims.ToList());
+            try
+            {
+                return View(insuranceDb.Claims.ToList());
+            }
+
+            catch (Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
         }
 
         public ActionResult ClaimsUser(int? id)
         {
-            return View(insuranceDb.Users.Find(id));
+            try
+            {
+                return View(insuranceDb.Users.Find(id));
+            }
+
+            catch (Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
         }
     }
 }

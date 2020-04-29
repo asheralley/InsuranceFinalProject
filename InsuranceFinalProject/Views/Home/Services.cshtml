@@ -9,25 +9,34 @@
     </div>
 </div>
 
-<div>
+<div class="service-cards">
+    <h3 class="services-header">Insure your car or motorcycle</h3>
     <div class="row row-cols-2">
         <div class="col services-info">
             <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <i class="fa fa-car"></i>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Car</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="home-link-container">
+                        <div class="home-link">
+                            @Html.ActionLink("Register", "RegisterVehicle", "User", null, new { @class = "nav-link" })
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col services-info">
             <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <i class="fa fa-motorcycle"></i>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Motorcycle</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="home-link-container">
+                        <div class="home-link">
+                            @Html.ActionLink("Register", "RegisterVehicle", "User", null, new { @class = "nav-link" })
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,6 +44,8 @@
 </div>
 
 <div class="compare-table">
+    <h3 class="services-header">Compare cover</h3>
+    <p class="text-center">This is a summary only. You can see the full list of benefits, terms and conditions in our policies</p>
     <div class="row table-heading">
         <div class="col-sm-4"></div>
         <div class="col-sm-8">

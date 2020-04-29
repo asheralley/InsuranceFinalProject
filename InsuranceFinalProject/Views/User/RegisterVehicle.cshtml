@@ -2,18 +2,52 @@
     Layout = "~/Views/User/_UserLayout.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="radio" value="c" name="newVehicleType" /> Car
-            <input type="radio" value="m" name="newVehicleType" /> Motor Cycle
+    <div class="contact-body">
+        <div class="contact-heading">
+            <h3>Register a new vehicle</h3>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-primary" />
+        @using (Html.BeginForm())
+        {
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="col services-info">
+                    <div class="card" style="width: 18rem;">
+                        <i class="fa fa-car"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Car</h5>
+                            <p class="card-text">Register a new car</p>
+
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="newVehicleType" id="option1" value="c" autocomplete="off"> Car
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col services-info">
+                    <div class="card" style="width: 18rem;">
+                        <i class="fa fa-motorcycle"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Motorcycle</h5>
+                            <p class="card-text">Register a new motorcycle</p>
+
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="newVehicleType" id="option2" value="m" autocomplete="off"> Motor Cycle
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="contact-submit">
+                    <input type="submit" value="Create" class="input-button" />
+                </div>
+            </div>
+
+        }
         </div>
-    </div>
-}
+        <div class="home-link-container">
+            <div class="home-link">
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+            </div>
+        </div>

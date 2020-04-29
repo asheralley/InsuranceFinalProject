@@ -9,9 +9,11 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
         <div class="container">
-            <a class="navbar-brand" href="@Url.Action("Home", "Index", "Home")"><img class="main-logo" src="~/Content/img/logo-thick.png" alt="Alternate Text" /></a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img class="main-logo" src="~/Content/img/logo-thick.png" alt="Alternate Text" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,10 +35,13 @@
                             @Html.ActionLink("My Details", "MyDetails", "User", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Register vehicle", "RegisterVehicle", "User", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Register another vehicle", "RegisterVehicle", "User", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Make a claim", "Claim", "User", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })
                         </li>
                     }
                     else
@@ -61,14 +66,14 @@
         <div class="container nav-flex">
             <a class="" href="@Url.Action("Index", "Home")"><img class="main-logo-sticky" src="~/Content/img/logo-thick.png" alt="Alternate Text" /></a>
 
-            <ul>
+            <ul class="sticky-nav-ul">
                 @if (Session["UserId"] != null)
                 {
                     <li class="sticky-nav-item">
                         @Html.ActionLink("My Details", "MyDetails", "User", null, new { @class = "sticky-nav-link" })
                     </li>
                     <li class="sticky-nav-item">
-                        @Html.ActionLink("Register another vehicle", "RegisterVehicle", "User", null, new { @class = "sticky-nav-link" })
+                        @Html.ActionLink("Register vehicle", "RegisterVehicle", "User", null, new { @class = "sticky-nav-link" })
                     </li>
                     <li class="sticky-nav-item">
                         @Html.ActionLink("Make a Claim", "Claim", "User", null, new { @class = "sticky-nav-link" })
@@ -167,39 +172,8 @@
                     <li>
                         <a href="#">
                             <svg width="99.04" height="99.04" viewBox="0 0 99.04 99.04" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-                            <g transform="matrix(1,0,0,1,-296.351,-75.52)">
-                            <path d="M345.871,75.52C373.202,75.52 395.391,97.709 395.391,125.04C395.391,152.371 373.202,174.56 345.871,174.56C318.54,174.56 296.351,152.371 296.351,125.04C296.351,97.709 318.54,75.52 345.871,75.52ZM367.776,103.178C368.225,103.589 374.944,101.157 375.903,100.048C376.862,98.939 374.194,105.684 370.387,107.213C370.387,107.213 377.012,106.133 377.851,105.234C377.851,105.234 374.669,110.17 371.371,112.028C371.371,112.028 371.333,112.482 371.316,113.718C371.175,123.849 364.794,149.845 334,151.08C334,151.08 321.722,150.882 313.89,145.112C313.89,145.112 315.764,145.261 317.038,145.261C318.312,145.261 327.08,145.299 333.076,139.753C333.076,139.753 324.42,139.903 321.01,130.647C321.01,130.647 324.382,131.322 326.968,130.347C326.968,130.347 316.991,128.821 316.438,117.382C316.438,117.382 319.491,119.395 322.464,118.992C322.464,118.992 316.225,114.968 316.563,108.148C316.563,108.148 316.259,104.176 318.228,101.553C318.228,101.553 327.12,114.218 345.342,115.155C345.342,115.155 344.977,114.218 345.014,112.232C345.014,112.232 344.635,100.073 358.262,99.006C359.342,98.922 363.918,99.642 367.776,103.178Z" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                <g transform="matrix(1,0,0,1,-296.351,-75.52)">
+                                    <path d="M345.871,75.52C373.202,75.52 395.391,97.709 395.391,125.04C395.391,152.371 373.202,174.56 345.871,174.56C318.54,174.56 296.351,152.371 296.351,125.04C296.351,97.709 318.54,75.52 345.871,75.52ZM367.776,103.178C368.225,103.589 374.944,101.157 375.903,100.048C376.862,98.939 374.194,105.684 370.387,107.213C370.387,107.213 377.012,106.133 377.851,105.234C377.851,105.234 374.669,110.17 371.371,112.028C371.371,112.028 371.333,112.482 371.316,113.718C371.175,123.849 364.794,149.845 334,151.08C334,151.08 321.722,150.882 313.89,145.112C313.89,145.112 315.764,145.261 317.038,145.261C318.312,145.261 327.08,145.299 333.076,139.753C333.076,139.753 324.42,139.903 321.01,130.647C321.01,130.647 324.382,131.322 326.968,130.347C326.968,130.347 316.991,128.821 316.438,117.382C316.438,117.382 319.491,119.395 322.464,118.992C322.464,118.992 316.225,114.968 316.563,108.148C316.563,108.148 316.259,104.176 318.228,101.553C318.228,101.553 327.12,114.218 345.342,115.155C345.342,115.155 344.977,114.218 345.014,112.232C345.014,112.232 344.635,100.073 358.262,99.006C359.342,98.922 363.918,99.642 367.776,103.178Z" />
                                 </g>
                             </svg>
                         </a>
@@ -210,7 +184,7 @@
                 </div>
 
             </div>
-
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
 
         </div>
 

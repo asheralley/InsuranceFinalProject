@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "WrongAction";
+    Layout = "~/Views/User/_UserLayout.cshtml";
+}
+
+<h2>Whoops! Something went wrong :/</h2>
+
+<div class="home-link-container">
+    <div class="home-link">
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+    </div>
+</div>
+
+

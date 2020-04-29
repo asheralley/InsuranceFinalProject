@@ -15,3 +15,9 @@ window.onscroll = function () {
 $('.carousel').carousel({
     interval: 5000
 });
+
+$(function () {
+    $('#datePicker').datepicker({
+        format: 'yyyy/mm/dd'
+    });
+});

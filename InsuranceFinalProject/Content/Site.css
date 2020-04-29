@@ -121,6 +121,40 @@ textarea {
     width: 180px;
 }
 
+ul.sticky-nav-ul {
+    list-style: none;
+    margin-top: 0.4em;
+    margin-bottom: 0;
+}
+
+li.sticky-nav-item {
+    display: inline;
+    border: 1px solid #cecece;
+    padding: 0.2em 1.5em;
+    border-radius: 5px;
+    margin-left: 1.2em;
+    transition: all ease-in-out 0.2s;
+}
+
+li.sticky-nav-item:hover {
+    background: #5D737E;
+    color: #fcfcfc;
+    text-decoration: none;
+    border: solid 1px transparent;
+}
+
+li.sticky-nav-item:hover a {
+    
+    text-decoration: none;
+}
+
+a.sticky-nav-link{
+    color: inherit;
+}
+
+.body-content{
+    min-height: 50vh;
+}
 /*.carousel-caption.d-none.d-md-block {
     text-align: center;
     bottom: 0;
@@ -136,13 +170,16 @@ textarea {
 .cta-sub{
     margin-top: 1.2em;
 }*/
-
 .accordian-content {
     margin-top: 3em;
 }
 
 .grab-heading {
     margin-bottom: 1.2em;
+}
+
+.col-md-5 img {
+    max-width: 100%;
 }
 
 /* Services styling */
@@ -153,10 +190,6 @@ textarea {
 
 .services {
     background-image: url(img/kelly-sikkema-XXherw1ujoI-unsplash.jpg);
-}
-
-.contact {
-    background-image: url(img/jake-blucker-ZGnC2gOvzKw-unsplash.jpg);
 }
 
 .hero-banner {
@@ -182,6 +215,16 @@ textarea {
     background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.0) 100%);
 }
 
+h3.services-header {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.service-cards {
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
 .col.services-info {
     text-align: center;
     display: flex;
@@ -192,11 +235,24 @@ textarea {
     margin: 0 auto;
 }
 
+i.fa.fa-car,
+i.fa.fa-motorcycle {
+    font-size: 8em;
+}
+
 .col-heading {
     text-align: center;
 }
 
 .col-item {
+    text-align: center;
+}
+
+.compare-table {
+    margin-top: 4em;
+}
+
+.text-center {
     text-align: center;
 }
 
@@ -231,15 +287,16 @@ textarea {
     margin-top: 2em;
 }
 
-.contact-submit{
-
-}
-
 .input-button {
     padding: 0.5em 0.8em;
     background: #5d737e;
     border: none;
     border-radius: 3px;
+    color: #fcfcfc;
+}
+
+.input-button:hover {
+    text-decoration: none;
     color: #fcfcfc;
 }
 
@@ -249,6 +306,57 @@ textarea {
     margin: 2.5em auto 0;
     position: relative;
     width: 100px;
+}
+
+/* About*/
+.about-img img{
+    max-width: 100%;
+}
+
+.about-grab{
+    margin-top: 2.5em;
+}
+
+/* User details */
+.user-details h3 {
+    font-size: 1.2em;
+}
+
+.vehicle-details {
+    margin: 1.2em 0 1.6em;
+}
+
+.vehicle-details h3 {
+    font-size: 1.6em;
+}
+
+.details-heading,
+.details-body {
+    display: flex;
+    justify-content: space-around;
+    /* width: 33.33%; */
+    /* background: #cecece; */
+}
+
+.details-heading p {
+     width: 33.33%; 
+    /* background: #cecece; */
+    border-right: 1px solid #cecece;
+    /*padding: 0 3em;*/
+}
+
+.details-body p {
+    width: 33.33%;
+}
+
+.details-heading p:last-child{
+    border: none;
+}
+
+/* Register new vehicle*/
+
+.contact-submit {
+    text-align: center;
 }
 
 /* Footer */
@@ -313,6 +421,24 @@ footer h4 {
 .main-logo-footer {
     width: 180px;
     vertical-align: super;
+}
+
+.admin-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-footer-img{
+    width: 200px;
+}
+
+.lower-admin-footer {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+.lower-admin-footer p{
+    margin: 0;
 }
 
 /* Navbar animation */

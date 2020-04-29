@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/User/_UserLayout.cshtml";
+}
+
+<h2>404 Not Found!</h2>
+
+<p>Sorry, it looks like that page is no longer there!</p>
+
+<div class="home-link-container">
+    <div class="home-link">
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+    </div>
+</div>
+

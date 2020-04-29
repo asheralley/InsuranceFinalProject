@@ -26,7 +26,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", placeholder = "Date of incident", @readonly = "true" } })*@
+                <input type="text" name="Date" id="datePicker" placeholder="Date of incident" />
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,12 +53,13 @@
 {
     <div>
         <h3>@ViewBag.claimMsg</h3>
-        @Html.ActionLink("Home", "Index", "Home")
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="home-link-container">
+    <div class="home-link">
+        @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
+    </div>
 </div>
 
 @section Scripts {

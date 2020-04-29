@@ -4,7 +4,11 @@
 
         <p>In order to complete your registraion, please click on the link below to be redirected to the login page. Thanks!</p>
 
-        <p>For the Alliance!</p>
+        <p>We're for you and for the Alliance!</p>
 
-        @Html.ActionLink("Login", "Login")
+        <div class="home-link-container">
+            <div class="home-link">
+                @Html.ActionLink("Login", "Login", "Home", null, new { @class = "input-button" })
+            </div>
+        </div>
     </div>

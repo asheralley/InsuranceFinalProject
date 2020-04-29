@@ -1,30 +1,63 @@
 ﻿@model InsuranceFinalProject.ViewModel.CarMotorDetails
 
-<div>
-    <h3><span>Name: </span>@ViewBag.userFirstName @ViewBag.userLastName</h3>
-    <h3><span>Username: </span>@ViewBag.userUserName</h3>
-</div>
-<div>
-    @foreach (var car in Model.CarDetails)
-    {
-        <h3>Car Details: </h3>
-        <p>@car.CarReg</p>
-        <p>@car.CarValue</p>
-        <p>@car.ModeofUse</p>
-    }
-</div>
-<div>
-    @foreach (var moto in Model.MotorBikeDetails)
-    {
-        <h3>Motor Cycle Details: </h3>
-        <p>@moto.MotorReg</p>
-        <p>@moto.MotorValue</p>
-        <p>@moto.ModeofUse</p>
-    }
-</div>
+    <div class="contact-body">
+        <div class="contact-heading">
+            <h3>My details</h3>
+        </div>
+        <div class="details-col">
+            <div class="user-details">
+                <h3><span>Name: </span>@ViewBag.userFirstName @ViewBag.userLastName</h3>
+                <h3><span>Username: </span>@ViewBag.userUserName</h3>
+            </div>
+            <div>
+                @foreach (var car in Model.CarDetails)
+                {
+                    <div class="vehicle-details">
+                        <h3>Car Details</h3>
+                        <div class="vehicle-details-table">
+                            <div class="details-heading">
+                                <p>Registration number</p>
+                                <p>Listed value</p>
+                                <p>Mode of use</p>
+                            </div>
+                            <div class="details-body">
+                                <p>@car.CarReg</p>
+                                <p>$@car.CarValue.00</p>
+                                <p>@car.ModeofUse</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div>
+                @foreach (var moto in Model.MotorBikeDetails)
+                {
+                <div class="vehicle-details">
+                    <h3>Motor Cycle Details</h3>
+                    <div class="vehicle-details-table">
+                        <div class="details-heading">
+                            <p>Registration number</p>
+                            <p>Listed value</p>
+                            <p>Mode of use</p>
+                        </div>
+                        <div class="details-body">
+                            <p>@moto.MotorReg</p>
+                            <p>$@moto.MotorValue.00</p>
+                            <p>@moto.ModeofUse</p>
+                        </div>
+                    </div>
+                </div>
 
-@* Set edit button here *@
+                }
+            </div>
+        </div>
+    </div>
 
-<div>
-    @Html.ActionLink("Edit your details", "EditDetails", "User")
-</div>
+        @* Set edit button here *@
+
+        <div class="home-link-container">
+            <div class="home-link">
+                @Html.ActionLink("Edit", "EditDetails", "User", null, new { @class = "nav-link" })
+            </div>
+        </div>
+

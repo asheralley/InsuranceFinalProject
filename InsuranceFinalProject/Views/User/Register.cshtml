@@ -4,40 +4,39 @@
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
+    <div class="contact-body">
+        <div class="contact-heading">
+            <h3>Sign up</h3>
+        </div>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
     <div class="form-horizontal">
-        <h4>UserView</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="contact-input">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First name" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="contact-input">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last name" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="contact-input">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                @if(ViewBag.msg != null)
+                @if (ViewBag.msg != null)
                 {
                     <div class="alert alert-danger" role="alert">
                         @ViewBag.msg
@@ -47,38 +46,46 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="contact-input">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="contact-input">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm password" } })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="radio" value="c" name="VehicleType"/> Car
+        @*<div class="form-group">
+            <div class="contact-input">
+                <input type="radio" value="c" name="VehicleType" /> Car
                 <input type="radio" value="m" name="VehicleType" /> Motor Cycle
             </div>
+        </div>*@
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="VehicleType" id="option1" value="c" autocomplete="off"> Car
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="VehicleType" id="option2" value="m" autocomplete="off"> Motor Cycle
+            </label>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="contact-submit">
+                <input type="submit" value="Submit" class="input-button" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+</div>
+<div class="home-link-container">
+    <div class="home-link">
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+    </div>
 </div>
 
 @section Scripts {

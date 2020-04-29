@@ -53,14 +53,26 @@ namespace InsuranceFinalProject.Controllers
 
         public ActionResult RegCar()
         {
-            UserCarMotorModel userCarMotor = new UserCarMotorModel();
-            UserView userView = (UserView)TempData["user"];
-            userCarMotor.FirstName = userView.FirstName;
-            userCarMotor.LastName = userView.LastName;
-            userCarMotor.UserName = userView.UserName;
-            userCarMotor.Password = userView.Password;
+            // not catching the exeption???
+            // may try to add if statement
+            try
+            {
+                UserCarMotorModel userCarMotor = new UserCarMotorModel();
+                UserView userView = (UserView)TempData["user"];
+                userCarMotor.FirstName = userView.FirstName;
+                userCarMotor.LastName = userView.LastName;
+                userCarMotor.UserName = userView.UserName;
+                userCarMotor.Password = userView.Password;
 
-            return View(userCarMotor);
+                return View(userCarMotor);
+            }
+            catch (Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
+        
         }
 
         [HttpPost]
@@ -105,13 +117,25 @@ namespace InsuranceFinalProject.Controllers
 
         public ActionResult RegMotor()
         {
-            UserCarMotorModel userCarMotor = new UserCarMotorModel();
-            UserView userView = (UserView)TempData["user"];
-            userCarMotor.FirstName = userView.FirstName;
-            userCarMotor.LastName = userView.LastName;
-            userCarMotor.UserName = userView.UserName;
-            userCarMotor.Password = userView.Password;
-            return View(userCarMotor);
+            // not catching the exeption???
+            // may try to add if statement
+            try
+            {
+                UserCarMotorModel userCarMotor = new UserCarMotorModel();
+                UserView userView = (UserView)TempData["user"];
+                userCarMotor.FirstName = userView.FirstName;
+                userCarMotor.LastName = userView.LastName;
+                userCarMotor.UserName = userView.UserName;
+                userCarMotor.Password = userView.Password;
+                return View(userCarMotor);
+            }
+            catch(Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
+            
         }
 
         [HttpPost]
@@ -147,9 +171,6 @@ namespace InsuranceFinalProject.Controllers
 
                 return RedirectToAction("PleaseLogin", "User");
             }
-
-            // exeption handling here?...
-            // Existing user regersting a new vehicle?
 
             return View();
         }
@@ -209,40 +230,57 @@ namespace InsuranceFinalProject.Controllers
         [HttpPost]
         public ActionResult Claim(Claim customerClaim)
         {
+            // exception here?
             customerClaim.UserId = Convert.ToInt32(Session["UserId"]);
-            db.Claims.Add(customerClaim);
-            db.SaveChanges();
-            ViewBag.claimMsg = "Your claim has been submitted";
+            if (ModelState.IsValid)
+            {
+                db.Claims.Add(customerClaim);
+                db.SaveChanges();
+                ViewBag.claimMsg = "Your claim has been submitted";
+            }
+            
             return View();
         }
 
         public ActionResult MyDetails()
         {
             // handle exemption here!!!
-            User user = db.Users.Find(Convert.ToInt32(Session["UserId"]));
-            var userId = (int)Session["UserId"];
-
-            ViewBag.userFirstName = user.FirstName;
-            ViewBag.userLastName = user.LastName;
-            ViewBag.userUserName = user.UserName;
-
-            // Find all instances of Cars with a specific userid
-            List<Car> carList = db.Cars.Where(x => x.UserId == userId).ToList();
-            List<MotorBike> motoList = db.MotorBikes.Where(x => x.UserId == userId).ToList();
-
-            //List<CarMotorViewModel> vehicleList;
-
-            var tables = new CarMotorDetails
+            try
             {
-                CarDetails = carList,
-                MotorBikeDetails = motoList
-            };
+                User user = db.Users.Find(Convert.ToInt32(Session["UserId"]));
 
-            return View(tables);
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "User");
+                }
 
-            
+                var userId = (int)Session["UserId"];
 
+                ViewBag.userFirstName = user.FirstName;
+                ViewBag.userLastName = user.LastName;
+                ViewBag.userUserName = user.UserName;
 
+                // Find all instances of Cars with a specific userid
+                List<Car> carList = db.Cars.Where(x => x.UserId == userId).ToList();
+                List<MotorBike> motoList = db.MotorBikes.Where(x => x.UserId == userId).ToList();
+
+                //List<CarMotorViewModel> vehicleList;
+
+                var tables = new CarMotorDetails
+                {
+                    CarDetails = carList,
+                    MotorBikeDetails = motoList
+                };
+
+                return View(tables);
+            }
+            catch(Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
+  
         }
 
         public ActionResult RegisterVehicle()
@@ -273,12 +311,17 @@ namespace InsuranceFinalProject.Controllers
 
         public ActionResult NewRegCar()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult NewRegCar(CarMotorViewModel newCarMotor)
         {
+            
             Car newCar = new Car();
             newCar.UserId = (int)Session["UserId"];
             newCar.CarReg = newCarMotor.CarReg;
@@ -295,6 +338,10 @@ namespace InsuranceFinalProject.Controllers
 
         public ActionResult NewRegMotor()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
             return View();
         }
 
@@ -317,16 +364,26 @@ namespace InsuranceFinalProject.Controllers
 
         public ActionResult EditDetails()
         {
-            User userEdit = db.Users.Find(Convert.ToInt32(Session["UserId"]));
+            try
+            {
+                User userEdit = db.Users.Find(Convert.ToInt32(Session["UserId"]));
 
-            UserView userViewEdit = new UserView();
+                UserView userViewEdit = new UserView();
 
-            userViewEdit.FirstName = userEdit.FirstName;
-            userViewEdit.LastName = userEdit.LastName;
-            userViewEdit.UserName = userEdit.UserName;
-            userViewEdit.Password = userEdit.Password;
+                userViewEdit.FirstName = userEdit.FirstName;
+                userViewEdit.LastName = userEdit.LastName;
+                userViewEdit.UserName = userEdit.UserName;
+                userViewEdit.Password = userEdit.Password;
 
-            return View(userViewEdit);
+                return View(userViewEdit);
+            }
+            catch(Exception ex)
+            {
+                TempData["err"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("WrongAction", "Error");
+            }
+            
         }
 
         [HttpPost]
