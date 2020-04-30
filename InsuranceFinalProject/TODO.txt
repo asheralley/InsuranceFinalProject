@@ -1,9 +1,5 @@
 ﻿TODO's
 
-Check responsive
-	- responsive images!
-	- responsive navs!!
+Add some more images to gallery
 
 -> Final checks
-
--> Slides

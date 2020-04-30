@@ -4,64 +4,67 @@
 
 @model InsuranceFinalProject.Models.Claim
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Claim</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
-            </div>
+    <div class="contact-body">
+        <div class="contact-heading">
+            <h3>Make a claim</h3>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", placeholder = "Date of incident", @readonly = "true" } })*@
-                <input type="text" name="Date" id="datePicker" placeholder="Date of incident" />
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+        @if (ViewBag.claimMsg != null)
+        {
+            <div>
+                <h3>@ViewBag.claimMsg</h3>
             </div>
-        </div>
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nature, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Nature, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Nature, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <div class="contact-input">
+                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control", @placeholder = "Location of incident" } })
+                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="contact-input">
+                        @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @placeholder = "Date of incident", @id = "datePicker", @readonly = "true" } })
+                        @*<input type="text" name="Date" id="datePicker" placeholder="Date of incident" />*@
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="contact-input">
+                        @Html.TextAreaFor(model => model.Nature, new { @class = "form-control", @placeholder = "Nature of incident" })
+                        @Html.ValidationMessageFor(model => model.Nature, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="contact-submit">
+                        <input type="submit" value="Create" class="input-button" />
+                    </div>
+                </div>
             </div>
-        </div>
+        }
+
+
     </div>
-}
 
-@if (ViewBag.claimMsg != null)
-{
-    <div>
-        <h3>@ViewBag.claimMsg</h3>
-    </div>
-}
+        <div class="home-link-container">
+            <div class="home-link">
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+            </div>
+        </div>
 
-<div class="home-link-container">
-    <div class="home-link">
-        @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
-    </div>
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

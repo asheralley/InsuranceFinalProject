@@ -197,6 +197,7 @@ namespace InsuranceFinalProject.Controllers
                 Session["FirstName"] = User.FirstName;
                 Session["LastName"] = User.LastName;
 
+                // admin redirection
                 if(User.UserId == 10)
                 {
                     return RedirectToAction("Index", "Admin");

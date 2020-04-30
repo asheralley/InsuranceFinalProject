@@ -5,7 +5,6 @@
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<h2>ClaimsUser</h2>
 
 <div>
     <h4>User</h4>
@@ -35,17 +34,5 @@
             @Html.DisplayFor(model => model.UserName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

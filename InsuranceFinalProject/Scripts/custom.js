@@ -18,6 +18,7 @@ $('.carousel').carousel({
 
 $(function () {
     $('#datePicker').datepicker({
-        format: 'yyyy/mm/dd'
+        format: 'yyyy/mm/dd',
+        orientation: "bottom auto"
     });
 });

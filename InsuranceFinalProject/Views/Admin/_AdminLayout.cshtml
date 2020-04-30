@@ -37,29 +37,6 @@
         </div>
     </nav>
 
-    @* Scroll down nav here *@
-    @* Make this a partial view *@
-
-    <div class="sticky-nav nav-hide" id="stickyNav">
-        <div class="container nav-flex">
-            <a class="" href="@Url.Action("Index", "Admin")"><img class="main-logo-sticky" src="~/Content/img/logo-thick.png" alt="Alternate Text" /></a>
-            <ul class="sticky-nav-ul">
-                <li class="sticky-nav-item">
-                    @Html.ActionLink("Messages", "Messages", "Admin", null, new { @class = "nav-link" })
-                </li>
-                <li class="sticky-nav-item">
-                    @Html.ActionLink("Users", "Users", "Admin", null, new { @class = "nav-link" })
-                </li>
-                <li class="sticky-nav-item">
-                    @Html.ActionLink("Claims", "Claims", "Admin", null, new { @class = "nav-link" })
-                </li>
-                <li class="sticky-nav-item">
-                    @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "sticky-nav-link" })
-                </li>
-            </ul>
-        </div>
-    </div>
-
     <div class="container body-content">
 
         @RenderBody()
