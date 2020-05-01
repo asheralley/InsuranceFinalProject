@@ -52,7 +52,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.MotorReg, htmlAttributes: new { @class = "control-label" })
                 <div class="contact-input">
-                    @Html.EditorFor(model => model.MotorReg, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registration number" } })
+                    @Html.EditorFor(model => model.MotorReg, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registration number", @value = "" } })
                     @Html.ValidationMessageFor(model => model.MotorReg, "", new { @class = "text-danger" })
                 </div>
             </div>

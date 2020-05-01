@@ -174,12 +174,50 @@ a.sticky-nav-link{
     margin-top: 3em;
 }
 
+#headingOne,
+#headingTwo,
+#headingThree {
+    background: #5D737E;
+}
+
+.btn-link{
+    color: #fcfcfc;
+    text-decoration: none;
+}
+
+.btn-link:hover,
+.btn-link:visited,
+.btn-link:focus
+{
+    color: #fcfcfc;
+    text-decoration: none;
+}
+
+.fa-angle-down {
+    font-size: 1.3em;
+    font-weight: 900;
+    margin-left: 0.5em;
+    background: #fcfcfc;
+    padding: 0.2em 0.4em;
+    border-radius: 50%;
+    color: #5d737e;
+}
+
 .grab-heading {
     margin-bottom: 1.2em;
 }
 
 .col-md-5 img {
     max-width: 100%;
+}
+
+.featurette-divider {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.row.featurette {
+    margin-top: 2.5em;
 }
 
 /* Services styling */
@@ -305,7 +343,7 @@ i.fa.fa-motorcycle {
     text-align: center;
     margin: 2.5em auto 0;
     position: relative;
-    width: 100px;
+    width: 150px;
 }
 
 /* About*/
@@ -454,6 +492,10 @@ footer h4 {
     margin: 0;
 }
 
+.rotate-icon {
+    transform: rotate(180deg);
+}
+
 /* Navbar animation */
 @keyframes fadeIn {
     0% {
@@ -481,6 +523,17 @@ footer h4 {
 
 /*// Medium devices (tablets, less than 992px)*/
 @media only screen and (max-width: 991.98px) {
+    .navbar{
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+    }
+
+    .body-content{
+        margin-top: 9em;
+    }
+    
     #stickyNav {
         display: none;
     }

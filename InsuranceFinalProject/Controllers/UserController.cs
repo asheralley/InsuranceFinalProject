@@ -23,8 +23,6 @@ namespace InsuranceFinalProject.Controllers
         [HttpPost]
         public ActionResult Register(UserView U, char VehicleType)
         {
-            // divert if session is not null?
-
             int sx = db.Users.Where(x => x.UserName == U.UserName).Count();
 
             if(ModelState.IsValid && sx == 0)
@@ -51,27 +49,26 @@ namespace InsuranceFinalProject.Controllers
             }     
         }
 
+        // Register a car, passed from main registration page
         public ActionResult RegCar()
         {
             // not catching the exeption???
             // may try to add if statement
-            try
+            if(Session["UserId"] == null)
             {
-                UserCarMotorModel userCarMotor = new UserCarMotorModel();
-                UserView userView = (UserView)TempData["user"];
-                userCarMotor.FirstName = userView.FirstName;
-                userCarMotor.LastName = userView.LastName;
-                userCarMotor.UserName = userView.UserName;
-                userCarMotor.Password = userView.Password;
+                return RedirectToAction("Login");
+            }
+           
+            UserCarMotorModel userCarMotor = new UserCarMotorModel();
+            UserView userView = (UserView)TempData["user"];
+            userCarMotor.FirstName = userView.FirstName;
+            userCarMotor.LastName = userView.LastName;
+            userCarMotor.UserName = userView.UserName;
+            userCarMotor.Password = userView.Password;
 
-                return View(userCarMotor);
-            }
-            catch (Exception ex)
-            {
-                TempData["err"] = ex.Message;
-                TempData.Keep();
-                return RedirectToAction("WrongAction", "Error");
-            }
+
+            return View(userCarMotor);
+            
         
         }
 
@@ -119,22 +116,21 @@ namespace InsuranceFinalProject.Controllers
         {
             // not catching the exeption???
             // may try to add if statement
-            try
+
+            if (Session["UserId"] == null)
             {
-                UserCarMotorModel userCarMotor = new UserCarMotorModel();
-                UserView userView = (UserView)TempData["user"];
-                userCarMotor.FirstName = userView.FirstName;
-                userCarMotor.LastName = userView.LastName;
-                userCarMotor.UserName = userView.UserName;
-                userCarMotor.Password = userView.Password;
-                return View(userCarMotor);
+                return RedirectToAction("Login");
             }
-            catch(Exception ex)
-            {
-                TempData["err"] = ex.Message;
-                TempData.Keep();
-                return RedirectToAction("WrongAction", "Error");
-            }
+            
+            UserCarMotorModel userCarMotor = new UserCarMotorModel();
+            UserView userView = (UserView)TempData["user"];
+            userCarMotor.FirstName = userView.FirstName;
+            userCarMotor.LastName = userView.LastName;
+            userCarMotor.UserName = userView.UserName;
+            userCarMotor.Password = userView.Password;
+
+
+            return View(userCarMotor);
             
         }
 
@@ -183,13 +179,13 @@ namespace InsuranceFinalProject.Controllers
         [HttpPost]
         public ActionResult Login(UserView user)
         {
-            //string convertedPassword = Crypto.Hash(user.Password);
+            //convert password to encrypted characters
             user.Password = Convert.ToBase64String(System.Security.Cryptography.SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(user.Password)));
+            // find instances of users where username and password match
             int sx = db.Users.Where(x => x.UserName == user.UserName && x.Password == user.Password).ToList().Count();
 
             if (sx != 0)
             {
-                //var foundUser = db.Users.Single(x => x.UserName == user.UserName && x.Password == user.Password);
                 var User = db.Users.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
                 // Create session
                 Session["UserId"] = User.UserId;
@@ -197,7 +193,7 @@ namespace InsuranceFinalProject.Controllers
                 Session["FirstName"] = User.FirstName;
                 Session["LastName"] = User.LastName;
 
-                // admin redirection
+                // admin redirection for user with id 10
                 if(User.UserId == 10)
                 {
                     return RedirectToAction("Index", "Admin");
@@ -218,6 +214,7 @@ namespace InsuranceFinalProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // Redirects to special login screen once user has registered a vehicle and their details
         public ActionResult PleaseLogin()
         {
             return View();
@@ -265,8 +262,7 @@ namespace InsuranceFinalProject.Controllers
                 List<Car> carList = db.Cars.Where(x => x.UserId == userId).ToList();
                 List<MotorBike> motoList = db.MotorBikes.Where(x => x.UserId == userId).ToList();
 
-                //List<CarMotorViewModel> vehicleList;
-
+                // had to make a specific class to handle enumerating over car and motorcyle lists
                 var tables = new CarMotorDetails
                 {
                     CarDetails = carList,
@@ -284,6 +280,7 @@ namespace InsuranceFinalProject.Controllers
   
         }
 
+        // exisiting user can register another vehicle to their account
         public ActionResult RegisterVehicle()
         {
             if (Session["UserId"] == null)
